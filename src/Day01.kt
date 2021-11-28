@@ -1,4 +1,5 @@
 fun main() {
+
     val map = mapper(-1, '(' to 1, 's' to 1)
 
     fun part1(input: String) = input.sumOf(map)

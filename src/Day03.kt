@@ -1,4 +1,5 @@
 fun main() {
+
     val map = mapper(0 to 0, '^' to (0 to 1), '>' to (1 to 0), 'v' to (0 to -1), '<' to (-1 to 0))
 
     fun <T> String.process(initial: List<T>, callback: (acc: List<T>, Char) -> List<T>) = fold(initial, callback).distinct().size

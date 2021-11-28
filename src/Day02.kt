@@ -1,4 +1,5 @@
 fun main() {
+
     fun process(input: List<String>, callback: (List<Int>) -> Int) = input.sumOf {
         it.split('x').map(String::toInt).sorted().let(callback)
     }
