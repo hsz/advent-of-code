@@ -13,13 +13,6 @@ fun readInput(name: String) = File("src", "$name.txt").readLines()
 fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteArray())).toString(16)
 
 /**
- * Throws an [AssertionError] exception if both sides of the comparison aren't equal.
- */
-infix fun Int.shouldBe(expected: Int) {
-    if (this != expected) throw AssertionError("$this != $expected")
-}
-
-/**
  * Returns a function that for the given parameter returns a value based on the provided [mapping] or [defaultValue] instead.
  */
 fun <K, V> mapper(defaultValue: V, vararg mapping: Pair<K, V>): (K) -> V = { key -> mapOf(*mapping).getOrDefault(key, defaultValue) }
@@ -49,7 +42,7 @@ fun <T> Pair<Iterable<T>, Iterable<T>>.permutation() = sequence {
 /**
  * Creates a sequence with a permutation of the provided iterable.
  */
-fun <T> Iterable<T>.permutation() = (this to this).permutation()
+//fun <T> Iterable<T>.permutation() = (this to this).permutation()
 
 /**
  * Shorthand for [String.toInt].

@@ -8,13 +8,13 @@ fun main() {
 
     fun part2(input: String) = input.process(listOf(0 to 0, 0 to 0)) { acc, c -> acc + (acc[acc.size - 2] + map(c)) }
 
-    part1(">") shouldBe 2
-    part1("^>v<") shouldBe 4
-    part1("^v^v^v^v^v") shouldBe 2
+    check(part1(">") == 2)
+    check(part1("^>v<") == 4)
+    check(part1("^v^v^v^v^v") == 2)
 
-    part2("^v") shouldBe 3
-    part2("^>v<") shouldBe 3
-    part2("^v^v^v^v^v") shouldBe 11
+    check(part2("^v") == 3)
+    check(part2("^>v<") == 3)
+    check(part2("^v^v^v^v^v") == 11)
 
     val input = readInput("Day03").first()
     println(part1(input))

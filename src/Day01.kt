@@ -12,17 +12,17 @@ fun main() {
         }
     }
 
-    part1("(())") shouldBe 0
-    part1("(((") shouldBe 3
-    part1("(()(()(") shouldBe 3
-    part1("))(((((") shouldBe 3
-    part1("())") shouldBe -1
-    part1("))(") shouldBe -1
-    part1(")))") shouldBe -3
-    part1(")())())") shouldBe -3
+    check(part1("(())") == 0)
+    check(part1("(((") == 3)
+    check(part1("(()(()(") == 3)
+    check(part1("))(((((") == 3)
+    check(part1("())") == -1)
+    check(part1("))(") == -1)
+    check(part1(")))") == -3)
+    check(part1(")())())") == -3)
 
-    part2(")") shouldBe 1
-    part2("()())") shouldBe 5
+    check(part2(")") == 1)
+    check(part2("()())") == 5)
 
     val input = readInput("Day01").first()
     println(part1(input))

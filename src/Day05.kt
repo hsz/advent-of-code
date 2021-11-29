@@ -10,16 +10,16 @@ fun main() {
 
     fun part2(input: List<String>) = input.process("""(..).*\1""", """(.).\1""")
 
-    part1(listOf("ugknbfddgicrmopn")) shouldBe 1
-    part1(listOf("aaa")) shouldBe 1
-    part1(listOf("jchzalrnumimnmhp")) shouldBe 0
-    part1(listOf("haegwjzuvuyypxyu")) shouldBe 0
-    part1(listOf("dvszwmarrgswjxmb")) shouldBe 0
+    check(part1(listOf("ugknbfddgicrmopn")) == 1)
+    check(part1(listOf("aaa")) == 1)
+    check(part1(listOf("jchzalrnumimnmhp")) == 0)
+    check(part1(listOf("haegwjzuvuyypxyu")) == 0)
+    check(part1(listOf("dvszwmarrgswjxmb")) == 0)
 
-    part2(listOf("qjhvhtzxzqqjkmpb")) shouldBe 1
-    part2(listOf("xxyxx")) shouldBe 1
-    part2(listOf("uurcxstgmygtbstg")) shouldBe 0
-    part2(listOf("ieodomkazucvgmuy")) shouldBe 0
+    check(part2(listOf("qjhvhtzxzqqjkmpb")) == 1)
+    check(part2(listOf("xxyxx")) == 1)
+    check(part2(listOf("uurcxstgmygtbstg")) == 0)
+    check(part2(listOf("ieodomkazucvgmuy")) == 0)
 
     val input = readInput("Day05")
     println(part1(input))

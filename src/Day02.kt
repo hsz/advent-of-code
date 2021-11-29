@@ -8,11 +8,11 @@ fun main() {
 
     fun part2(input: List<String>) = process(input) { (a, b, c) -> 2 * a + 2 * b + a * b * c }
 
-    part1(listOf("2x3x4")) shouldBe 58
-    part1(listOf("1x1x10")) shouldBe 43
+    check(part1(listOf("2x3x4")) == 58)
+    check(part1(listOf("1x1x10")) == 43)
 
-    part2(listOf("2x3x4")) shouldBe 34
-    part2(listOf("1x1x10")) shouldBe 14
+    check(part2(listOf("2x3x4")) == 34)
+    check(part2(listOf("1x1x10")) == 14)
 
     val input = readInput("Day02")
     println(part1(input))

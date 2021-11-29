@@ -1,5 +1,3 @@
-import java.util.Locale
-
 enum class OP { ON, OFF, TOGGLE }
 
 fun main() {
@@ -32,12 +30,12 @@ fun main() {
         }
     }
 
-    part1(listOf("turn on 0,0 through 999,999")) shouldBe 1000000
-    part1(listOf("toggle 0,0 through 999,0")) shouldBe 1000
-    part1(listOf("turn off 499,499 through 500,500")) shouldBe 0
+    check(part1(listOf("turn on 0,0 through 999,999")) == 1000000)
+    check(part1(listOf("toggle 0,0 through 999,0")) == 1000)
+    check(part1(listOf("turn off 499,499 through 500,500")) == 0)
 
-    part2(listOf("turn on 0,0 through 0,0")) shouldBe 1
-    part2(listOf("toggle 0,0 through 999,999")) shouldBe 2000000
+    check(part2(listOf("turn on 0,0 through 0,0")) == 1)
+    check(part2(listOf("toggle 0,0 through 999,999")) == 2000000)
 
     val input = readInput("Day06")
     println(part1(input))

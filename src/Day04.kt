@@ -6,8 +6,8 @@ fun main() {
 
     fun part2(input: String) = input.process(6)
 
-    part1("abcdef") shouldBe 609043
-    part1("pqrstuv") shouldBe 1048970
+    check(part1("abcdef") == 609043)
+    check(part1("pqrstuv") == 1048970)
 
     val input = readInput("Day04").first()
     println(part1(input))
