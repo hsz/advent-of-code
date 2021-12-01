@@ -1,3 +1,9 @@
+package aoc2015
+
+import generateUntil
+import md5
+import readInput
+
 fun main() {
 
     fun String.process(zeros: Int) = generateUntil { "$this$it".md5().length > 32 - zeros }

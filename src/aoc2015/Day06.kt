@@ -1,3 +1,8 @@
+package aoc2015
+
+import permutation
+import readInput
+
 enum class OP { ON, OFF, TOGGLE }
 
 fun main() {

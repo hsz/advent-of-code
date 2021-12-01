@@ -1,3 +1,9 @@
+package aoc2015
+
+import mapper
+import plus
+import readInput
+
 fun main() {
 
     val map = mapper(0 to 0, '^' to (0 to 1), '>' to (1 to 0), 'v' to (0 to -1), '<' to (-1 to 0))

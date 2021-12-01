@@ -1,3 +1,7 @@
+package aoc2015
+
+import readInput
+
 fun main() {
 
     fun process(input: List<String>, callback: (List<Int>) -> Int) = input.sumOf {
