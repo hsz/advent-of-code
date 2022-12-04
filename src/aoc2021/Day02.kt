@@ -1,13 +1,13 @@
 package aoc2021
 
 import mapper
+import mustBe
 import plus
+import print
 import readInput
 import unaryPlus
 
 fun main() {
-
-//    val map = mapper(p -> 0 to 0, "forward" to (p -> 0 to 0), "down" to (p -> 0 to 0), "up" to (p -> 0 to 0))
 
     val map1 = mapper<String, Int, Pair<Int, Int>>(
         { 0 to 0 },
@@ -16,7 +16,7 @@ fun main() {
         "up" to { 0 to -it },
     )
 
-    fun part1(input: List<String>) = input.fold(0 to 0) { acc, value ->
+    fun List<String>.part1() = fold(0 to 0) { acc, value ->
         val (op, v) = value.split(' ')
         acc + map1(op, +v)
     }.let { it.first * it.second }
@@ -28,16 +28,18 @@ fun main() {
         "up" to { Triple(0, 0, -it.first) },
     )
 
-    fun part2(input: List<String>) = input.fold(Triple(0, 0, 0)) { acc, value ->
+    fun List<String>.part2() = fold(Triple(0, 0, 0)) { acc, value ->
         val (op, v) = value.split(' ')
         acc + map2(op, +v to acc.third)
     }.let { it.first * it.second }
 
-    val testInput = readInput("aoc2021/Day02_test")
-    check(part1(testInput) == 150)
-    check(part2(testInput) == 900)
+    readInput(2021, 2, true).apply {
+        part1() mustBe 150
+        part2() mustBe 900
+    }
 
-    val input = readInput("aoc2021/Day02")
-    println(part1(input))
-    println(part2(input))
+    readInput(2021, 2).apply {
+        part1().print()
+        part2().print()
+    }
 }

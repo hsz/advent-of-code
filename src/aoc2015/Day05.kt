@@ -1,6 +1,8 @@
 package aoc2015
 
 import mapper
+import mustBe
+import print
 import readInput
 
 fun main() {
@@ -11,22 +13,23 @@ fun main() {
         map(patterns.fold(true) { acc, v -> acc && v.toRegex().containsMatchIn(it) })
     }
 
-    fun part1(input: List<String>) = input.process("""(.)\1""", """([aeiou].*){3}""", """^((?!ab|cd|pq|xy).)*$""")
+    fun List<String>.part1() = process("""(.)\1""", """([aeiou].*){3}""", """^((?!ab|cd|pq|xy).)*$""")
 
-    fun part2(input: List<String>) = input.process("""(..).*\1""", """(.).\1""")
+    fun List<String>.part2() = process("""(..).*\1""", """(.).\1""")
 
-    check(part1(listOf("ugknbfddgicrmopn")) == 1)
-    check(part1(listOf("aaa")) == 1)
-    check(part1(listOf("jchzalrnumimnmhp")) == 0)
-    check(part1(listOf("haegwjzuvuyypxyu")) == 0)
-    check(part1(listOf("dvszwmarrgswjxmb")) == 0)
+    listOf("ugknbfddgicrmopn").part1() mustBe 1
+    listOf("aaa").part1() mustBe 1
+    listOf("jchzalrnumimnmhp").part1() mustBe 0
+    listOf("haegwjzuvuyypxyu").part1() mustBe 0
+    listOf("dvszwmarrgswjxmb").part1() mustBe 0
 
-    check(part2(listOf("qjhvhtzxzqqjkmpb")) == 1)
-    check(part2(listOf("xxyxx")) == 1)
-    check(part2(listOf("uurcxstgmygtbstg")) == 0)
-    check(part2(listOf("ieodomkazucvgmuy")) == 0)
+    listOf("qjhvhtzxzqqjkmpb").part2() mustBe 1
+    listOf("xxyxx").part2() mustBe 1
+    listOf("uurcxstgmygtbstg").part2() mustBe 0
+    listOf("ieodomkazucvgmuy").part2() mustBe 0
 
-    val input = readInput("Day05")
-    println(part1(input))
-    println(part2(input))
+    readInput(2015, 5).apply {
+        part1().print()
+        part2().print()
+    }
 }

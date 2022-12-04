@@ -1,7 +1,9 @@
 package aoc2015
 
 import mapper
+import mustBe
 import plus
+import print
 import readInput
 
 fun main() {
@@ -10,19 +12,20 @@ fun main() {
 
     fun <T> String.process(initial: List<T>, callback: (acc: List<T>, Char) -> List<T>) = fold(initial, callback).distinct().size
 
-    fun part1(input: String) = input.process(listOf(0 to 0)) { acc, c -> acc + (acc.last() + map(c)) }
+    fun String.part1() = process(listOf(0 to 0)) { acc, c -> acc + (acc.last() + map(c)) }
 
-    fun part2(input: String) = input.process(listOf(0 to 0, 0 to 0)) { acc, c -> acc + (acc[acc.size - 2] + map(c)) }
+    fun String.part2() = process(listOf(0 to 0, 0 to 0)) { acc, c -> acc + (acc[acc.size - 2] + map(c)) }
 
-    check(part1(">") == 2)
-    check(part1("^>v<") == 4)
-    check(part1("^v^v^v^v^v") == 2)
+    ">".part1() mustBe 2
+    "^>v<".part1() mustBe 4
+    "^v^v^v^v^v".part1() mustBe 2
 
-    check(part2("^v") == 3)
-    check(part2("^>v<") == 3)
-    check(part2("^v^v^v^v^v") == 11)
+    "^v".part2() mustBe 3
+    "^>v<".part2() mustBe 3
+    "^v^v^v^v^v".part2() mustBe 11
 
-    val input = readInput("Day03").first()
-    println(part1(input))
-    println(part2(input))
+    readInput(2015, 3).first().apply {
+        part1().print()
+        part2().print()
+    }
 }
