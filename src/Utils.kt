@@ -1,13 +1,12 @@
-import java.io.File
 import java.math.BigInteger
-import java.nio.file.Path
 import java.security.MessageDigest
+import kotlin.io.path.Path
 import kotlin.io.path.readLines
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(year: Int, day: Int, testData: Boolean = false) = Path.of("src")
+fun readInput(year: Int, day: Int, testData: Boolean = false) = Path("src")
     .resolve("aoc$year")
     .resolve("Day${"$day".padStart(2, '0')}${"_test".takeIf { testData }.orEmpty()}.txt")
     .readLines()
@@ -62,9 +61,3 @@ fun <T> Pair<Iterable<T>, Iterable<T>>.permutation() = sequence {
  * Shorthand for [String.toInt].
  */
 operator fun String.unaryPlus() = toInt()
-
-/**
- * Testing helper methods.
- */
-infix fun Int.mustBe(value: Int) = check(this == value)
-fun Int.print() = println(this)

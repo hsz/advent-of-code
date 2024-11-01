@@ -1,8 +1,6 @@
 package aoc2015
 
-import mustBe
 import permutation
-import print
 import readInput
 
 enum class OP { ON, OFF, TOGGLE }
@@ -21,7 +19,7 @@ fun main() {
             }
         }.values.sum()
 
-    fun List<String>.part1() = process { op ->
+    fun part1(input: List<String>) = input.process { op ->
         when (op) {
             OP.ON -> 1
             OP.OFF -> 0
@@ -29,7 +27,7 @@ fun main() {
         }
     }
 
-    fun List<String>.part2() = process { op ->
+    fun part2(input: List<String>) = input.process { op ->
         when (op) {
             OP.ON -> this + 1
             OP.OFF -> (this - 1).coerceAtLeast(0)
@@ -37,15 +35,14 @@ fun main() {
         }
     }
 
-    listOf("turn on 0,0 through 999,999").part1() mustBe 1000000
-    listOf("toggle 0,0 through 999,0").part1() mustBe 1000
-    listOf("turn off 499,499 through 500,500").part1() mustBe 0
+    check(part1(listOf("turn on 0,0 through 999,999")) == 1000000)
+    check(part1(listOf("toggle 0,0 through 999,0")) == 1000)
+    check(part1(listOf("turn off 499,499 through 500,500")) == 0)
 
-    listOf("turn on 0,0 through 0,0").part2() mustBe 1
-    listOf("toggle 0,0 through 999,999").part2() mustBe 2000000
+    check(part2(listOf("turn on 0,0 through 0,0")) == 1)
+    check(part2(listOf("toggle 0,0 through 999,999")) == 2000000)
 
-    readInput(2015, 6).apply {
-        part1().print()
-        part2().print()
-    }
+    val input = readInput(2015, 6)
+    println(part1(input))
+    println(part2(input))
 }
