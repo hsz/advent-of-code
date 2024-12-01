@@ -1,15 +1,18 @@
 import java.math.BigInteger
+import java.nio.file.Path
 import java.security.MessageDigest
 import kotlin.io.path.Path
-import kotlin.io.path.readLines
+import kotlin.io.path.readText
 
 /**
  * Reads lines from the given input txt file.
  */
-fun readInput(year: Int, day: Int, testData: Boolean = false) = Path("src")
-    .resolve("aoc$year")
-    .resolve("Day${"$day".padStart(2, '0')}${"_test".takeIf { testData }.orEmpty()}.txt")
-    .readLines()
+fun readInput(year: Int, day: Int, testData: Boolean = false): String {
+    val year = year.toString()
+    val day = day.toString().padStart(2, '0')
+    val ext = if (testData) "test" else "txt"
+    return Path("src", "$year.$day.$ext").readText().trim()
+}
 
 /**
  * Converts string to md5 hash.

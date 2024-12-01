@@ -1,10 +1,4 @@
-package aoc2015
-
-import mapper
-import readInput
-
 fun main() {
-
     val map = mapper(-1, '(' to 1, 's' to 1)
 
     fun part1(input: String) = input.sumOf(map)
@@ -29,7 +23,7 @@ fun main() {
     check(part2(")") == 1)
     check(part2("()())") == 5)
 
-    val input = readInput(2015, 1).first()
+    val input = readInput(2015, 1)
     println(part1(input))
     println(part2(input))
 }

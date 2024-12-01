@@ -1,10 +1,3 @@
-package aoc2021
-
-import mapper
-import plus
-import readInput
-import unaryPlus
-
 fun main() {
 
     val map1 = mapper<String, Int, Pair<Int, Int>>(
@@ -14,7 +7,7 @@ fun main() {
         "up" to { 0 to -it },
     )
 
-    fun part1(input: List<String>) = input.fold(0 to 0) { acc, value ->
+    fun part1(input: String) = input.lines().fold(0 to 0) { acc, value ->
         val (op, v) = value.split(' ')
         acc + map1(op, +v)
     }.let { it.first * it.second }
@@ -26,7 +19,7 @@ fun main() {
         "up" to { Triple(0, 0, -it.first) },
     )
 
-    fun part2(input: List<String>) = input.fold(Triple(0, 0, 0)) { acc, value ->
+    fun part2(input: String) = input.lines().fold(Triple(0, 0, 0)) { acc, value ->
         val (op, v) = value.split(' ')
         acc + map2(op, +v to acc.third)
     }.let { it.first * it.second }

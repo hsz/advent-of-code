@@ -1,14 +1,8 @@
-package aoc2015
-
-import permutation
-import readInput
-
 enum class OP { ON, OFF, TOGGLE }
 
 fun main() {
 
-    fun List<String>.process(callback: Int.(OP) -> Int) =
-        fold(mutableMapOf<Int, Int>()) { acc, v ->
+    fun String.process(callback: Int.(OP) -> Int) = lines().fold(mutableMapOf<Int, Int>()) { acc, v ->
             val op = OP.valueOf("on|off|toggle".toRegex().find(v)!!.value.uppercase())
             val (x1, y1, x2, y2) = v.replace("""\D+""".toRegex(), " ").trim().split(' ').map(String::toInt)
 
@@ -19,7 +13,7 @@ fun main() {
             }
         }.values.sum()
 
-    fun part1(input: List<String>) = input.process { op ->
+    fun part1(input: String) = input.process { op ->
         when (op) {
             OP.ON -> 1
             OP.OFF -> 0
@@ -27,7 +21,7 @@ fun main() {
         }
     }
 
-    fun part2(input: List<String>) = input.process { op ->
+    fun part2(input: String) = input.process { op ->
         when (op) {
             OP.ON -> this + 1
             OP.OFF -> (this - 1).coerceAtLeast(0)
@@ -35,12 +29,12 @@ fun main() {
         }
     }
 
-    check(part1(listOf("turn on 0,0 through 999,999")) == 1000000)
-    check(part1(listOf("toggle 0,0 through 999,0")) == 1000)
-    check(part1(listOf("turn off 499,499 through 500,500")) == 0)
+    check(part1("turn on 0,0 through 999,999") == 1000000)
+    check(part1("toggle 0,0 through 999,0") == 1000)
+    check(part1("turn off 499,499 through 500,500") == 0)
 
-    check(part2(listOf("turn on 0,0 through 0,0")) == 1)
-    check(part2(listOf("toggle 0,0 through 999,999")) == 2000000)
+    check(part2("turn on 0,0 through 0,0") == 1)
+    check(part2("toggle 0,0 through 999,999") == 2000000)
 
     val input = readInput(2015, 6)
     println(part1(input))
